@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Identifiez vous d'abord</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form #loginForm="ngForm" novalidate>
+		<ion-list no-lines>
+			<ion-item>
+				<ion-label stacked  color="secondary">Téléphone</ion-label>
+				<ion-input [(ngModel)]="login.tel" name="tel" type="tel" #tel="ngModel" spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<p ion-text class="p" [hidden]="tel.valid || submitted == false" color="danger" padding-left>
+				Téléphone obligatoire
+			</p>
+
+			<ion-item>
+				<ion-label stacked color="secondary">Mot de passe</ion-label>
+				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+				</ion-input>
+			</ion-item>
+			<p ion-text class="p" [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				Mot de passe obligatoire
+			</p>
+		</ion-list>
+		
+		<ion-row responsive-sm>
+			<ion-col>
+				<button ion-button (click)="connection(loginForm)"  color="secondary" type="submit" block>Se connecter</button>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-content>
