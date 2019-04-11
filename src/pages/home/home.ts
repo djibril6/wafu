@@ -24,6 +24,7 @@ export class HomePage {
     var toast = this.toastCtrl;
     data.append("mode", "del");
     data.append("id", item.id);
+    data.append("compte", item.compte);
     const loader = this.loadingCtrl.create({
       content: "Un instant...",
       duration: 3000
