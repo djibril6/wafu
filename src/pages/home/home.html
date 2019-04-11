@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Le Compte</ion-title>
+    <ion-title>Mon Compte</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,39 +9,31 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of cardItems">
+  <ion-card *ngFor="let item of api.user">
 
     <ion-item>
-      <ion-avatar item-start>
-        <img [src]="item.user.avatar">
-      </ion-avatar>
-      <h2>test</h2>
-      <p>test</p>
+      <h2>{{ item.nom }}</h2>
+      <p>{{ item.prenom }}</p>
     </ion-item>
 
-    <img [src]="item.image">
-
     <ion-card-content>
-      <p>test</p>
+      <p>Tel : {{ item.tel }}</p>
+      <p>Email : {{ item.email }}</p>
+      <p>Compte : {{ item.compte }}</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
-        <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='thumbs-up'></ion-icon>
-            12 Likes
+        <button (tap)="modif(item)" ion-button color="secondary" clear small icon-start>
+            <ion-icon name='hand'></ion-icon>
+            Modifier
           </button>
       </ion-col>
       <ion-col>
-        <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='text'></ion-icon>
-            4 Comments
-          </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
+        <button (tap)="del(item)" ion-button color="danger" clear small icon-start>
+            <ion-icon name='close'></ion-icon>
+            Supprimer
+        </button>
       </ion-col>
     </ion-row>
   </ion-card>
