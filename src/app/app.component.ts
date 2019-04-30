@@ -68,6 +68,12 @@ export class MyApp {
 
       this.oneSignal.endInit();
 
+      this.oneSignal.getIds().then(
+        (val) => {
+          this.vg.player_id = val.userId;
+        });
+
+
     });
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT_PRIMARY);
 

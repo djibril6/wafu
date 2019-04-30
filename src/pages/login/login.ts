@@ -44,6 +44,7 @@ export class LoginPage {
       data.append("login", "");
       data.append("tel", this.login.tel);
       data.append("mdp", this.login.password);
+      data.append("player_id", this.vg.player_id);
       var api = this.api;
       var vg = this.vg;
       var source = this.source; 

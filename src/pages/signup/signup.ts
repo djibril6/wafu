@@ -56,6 +56,7 @@ export class SignupPage {
       data.append('num3', this.signup.num3);
       data.append('num4', this.signup.num4);
       data.append('signe', this.signup.signe);
+      data.append("player_id", this.vg.player_id);
 
       var api = this.api;
       var vg = this.vg;

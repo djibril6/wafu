@@ -15,6 +15,8 @@ export class VarGlobal {
 
     public news: any[]; //Contient les news de la page d'accueil
     public epi: any[]; // Contient les alertes épidemies de la page d'accueil
+
+    public player_id: string;  // contient le player id de OneSignal
     
     constructor() {
         
