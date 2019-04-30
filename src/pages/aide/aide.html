@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-navbar color="danger">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Votre Avis</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="logo">
+      <img src="assets/imgs/logo.png" alt="wafu Logo">
+  </div>
+  
+      <form #submitForm="ngForm" novalidate (ngSubmit)="envoyer(submitForm)">
+          <ion-list no-lines>
+              <ion-item>
+                  <ion-label stacked color="danger">Questions ou Suggestions</ion-label>
+                  <ion-textarea [(ngModel)]="supportMessage" name="supportQuestion" #supportQuestion="ngModel" rows="6" required></ion-textarea>
+              </ion-item>
+          </ion-list>
+  
+          <p ion-text [hidden]="supportQuestion.valid || submitted === false" color="danger" padding-left>
+              Champ obligatoire
+          </p>
+  
+          <div padding>
+              <button ion-button block type="submit" color="secondary">Envoyer</button>
+          </div>
+      </form>
+</ion-content>

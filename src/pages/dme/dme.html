@@ -1,0 +1,141 @@
+<ion-header>
+	<ion-navbar color="danger">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dossier Médical</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div id="photo">
+    <img [src]="vg.user.photoProfil" cache=true class="img">
+  </div>
+  <div id="corps">
+    <ion-card>
+      <ion-card-header>
+          Nom et Prénom
+      </ion-card-header>
+      <ion-card-content>
+        {{ vg.user.nom }} {{ vg.user.prenom }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Carte d'identité
+      </ion-card-header>
+      <ion-card-content>
+        {{ vg.user.numCard }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Date et Lieu de Naissance
+      </ion-card-header>
+      <ion-card-content>
+        Né le <span>{{ vg.user.dateNaiss }}</span> à <span>{{ vg.user.lieuNaiss }}</span>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Contacts
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>Tel 1: </ion-col>
+            <ion-col col-8>{{ vg.user.tel }} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>Tel 2: </ion-col>
+            <ion-col col-8>{{ vg.user.tel2 }} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>Email: </ion-col>
+            <ion-col col-8>{{ vg.user.email }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>Domicile: </ion-col>
+            <ion-col col-8>{{ vg.user.adresse }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Caractéristiques
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-5>Groupe Sanguin: </ion-col>
+            <ion-col col-7>{{ vg.user.groupeS }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-5>Sexe: </ion-col>
+            <ion-col col-7>{{ vg.user.sexe }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-5>Taille: </ion-col>
+            <ion-col col-7>{{ vg.user.taille }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-5>Poids: </ion-col>
+            <ion-col col-7>{{ vg.user.poids }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-5>Signes particuliers: </ion-col>
+            <ion-col col-7>XXXX kg</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Profession
+      </ion-card-header>
+      <ion-card-content>
+        {{ vg.user.profession }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        A contacter en cas d'urgence
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>Tel 1: </ion-col>
+            <ion-col col-8>{{ vg.user.num1 }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>Tel 2: </ion-col>
+            <ion-col col-8>{{ vg.user.num2 }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>Tel 3: </ion-col>
+            <ion-col col-8>{{ vg.user.num3 }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>Tel 4: </ion-col>
+            <ion-col col-8>{{ vg.user.num4 }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card><br><br>
+  </div>
+
+</ion-content>

@@ -1,0 +1,169 @@
+<ion-header>
+    <ion-navbar color="danger">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Inscrivez-vous</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content>
+    <div class="logo">
+      <img src="assets/imgs/logo.png" alt="Ionic logo"> 
+    </div>
+
+    <form #signupForm="ngForm" novalidate>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label stacked  color="danger">Numéro de carte d'identité</ion-label>
+          <ion-input [(ngModel)]="signup.numCard" name="numCard" type="text" #numCard="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Nom *</ion-label>
+          <ion-input [(ngModel)]="signup.nom" name="nom" type="text" #nom="ngModel" spellcheck="false" autocapitalize="on"
+            required>
+          </ion-input>
+        </ion-item>
+        <p ion-text class="p" [hidden]="nom.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Prénom *</ion-label>
+          <ion-input [(ngModel)]="signup.prenom" name="prenom" type="text" #prenom="ngModel" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+        <p ion-text class="p" [hidden]="prenom.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Téléphone *</ion-label>
+          <ion-input [(ngModel)]="signup.tel" name="tel" type="tel" #tel="ngModel" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+        <p ion-text class="p" [hidden]="tel.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Autre téléphone</ion-label>
+          <ion-input [(ngModel)]="signup.tel2" name="tel2" type="tel" #tel2="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label stacked  color="danger">Email</ion-label>
+          <ion-input [(ngModel)]="signup.email" name="email" type="email" #email="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Adresse</ion-label>
+          <ion-input [(ngModel)]="signup.adresse" name="adresse" type="text" #adresse="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Sexe *</ion-label>
+          <ion-select [(ngModel)]="signup.sexe" name="sexe" type="text" #sexe="ngModel" spellcheck="false" autocapitalize="off"
+            required>
+            <ion-option value="Homme">Homme</ion-option>
+            <ion-option value="Femme">Femme</ion-option>
+          </ion-select>
+        </ion-item>
+        <p ion-text class="p" [hidden]="sexe.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Date de Naissance *</ion-label>
+          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="YYYY-MM-DD" [(ngModel)]="signup.dateNaiss"  name="dateNaiss" spellcheck="false" #dateNaiss="ngModel" required></ion-datetime>
+        </ion-item>
+        <p ion-text class="p" [hidden]="dateNaiss.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Lieu de Naissance *</ion-label>
+          <ion-input [(ngModel)]="signup.lieuNaiss" name="lieuNaiss" type="text" #lieuNaiss="ngModel" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+        <p ion-text class="p" [hidden]="lieuNaiss.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Taille</ion-label>
+          <ion-input [(ngModel)]="signup.taille" name="taille" type="text" #taille="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Poids</ion-label>
+          <ion-input [(ngModel)]="signup.poids" name="poids" type="text" #poids="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Profession</ion-label>
+          <ion-input [(ngModel)]="signup.profession" name="profession" type="text" #profession="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Tel 1 *</ion-label>
+          <ion-input [(ngModel)]="signup.num1" name="num1" type="tel" #num1="ngModel" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+        <p ion-text class="p" [hidden]="num1.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Tel 2</ion-label>
+          <ion-input [(ngModel)]="signup.num2" name="num2" type="tel" #num2="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Tel 3</ion-label>
+          <ion-input [(ngModel)]="signup.num3" name="num3" type="tel" #num3="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="danger">Tel 4</ion-label>
+          <ion-input [(ngModel)]="signup.num4" name="num4" type="tel" #num4="ngModel" spellcheck="false" autocapitalize="off">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked color="danger">Mot de passe *</ion-label>
+          <ion-input [(ngModel)]="signup.signe" name="signe" type="password" #signe="ngModel" required>
+          </ion-input>
+        </ion-item>
+        <p ion-text class="p" [hidden]="signe.valid || submitted == false" color="danger" padding-left>
+          Champ obligatoire
+        </p>
+      </ion-list>
+      
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button (click)="inscription(signupForm)"  color="danger" type="submit" block>Inscription</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="login()" color="light" block>Se connecter</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  
+  </ion-content>
+  

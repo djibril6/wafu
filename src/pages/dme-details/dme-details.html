@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar color="danger">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="vg.message === '-'">
+  <ion-card *ngFor="let d of vg.dme">
+    <ion-card-header>
+      {{ d.nomAllergie }}
+      {{ d.nomAntecedant }}<span *ngIf="d.nomAntecedant">/</span>{{ d.dateDebutAntecedant }}<span *ngIf="d.dateFinAntecedant">-</span>{{ d.dateFinAntecedant }} 
+      {{ d.dateConsultation }}
+      {{ d.nomMaladie }}
+      {{ d.dateAnalyse }}
+      {{ d.nomTraitement }}
+      <span *ngIf="d.dateDebutHospitalisation">{{ d.dateDebutHospitalisation }}-{{ d.dateFinHospitalisation }}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <span *ngIf="d.degreAllergie">Degré : {{ d.degreAllergie }} </span>
+      <span *ngIf="d.typeConsultation">Type : {{ d.typeConsultation }} </span>
+      <span *ngIf="d.nomStructure">Lieu : {{ d.nomStructure }}</span>
+      <span *ngIf="d.degreMaladie">Degré : {{ d.degreMaladie }} </span>
+      <span *ngIf="d.typeAnalyse">Type : {{ d.typeAnalyse }}</span>
+    </ion-card-content>
+    <button ion-button icon-start class="btn" (click)="voirPlus(d)" color="secondary">
+      <ion-icon name="add-circle"></ion-icon>
+      PLUS
+    </button>
+  </ion-card>
+</div>
+
+<div *ngIf="vg.message !== '-'">
+  <ion-card>
+    <ion-card-content>
+      {{ vg.message }}
+    </ion-card-content>
+  </ion-card>
+</div>
+
+</ion-content>

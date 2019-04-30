@@ -1,0 +1,44 @@
+<ion-header>
+	<ion-navbar color="danger">
+    <ion-title>{{ titre }}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="danger" showWhen="ios">Fermer</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      {{ dme.nomAllergie }} 
+      {{ dme.nomAntecedant }}<span *ngIf="dme.nomAntecedant">/</span>{{ dme.dateDebutAntecedant }}<span *ngIf="dme.dateFinAntecedant">-</span>{{ dme.dateFinAntecedant }} 
+      {{ dme.dateConsultation }}
+      {{ dme.nomMaladie }}
+      {{ dme.dateAnalyse }}
+      {{ dme.nomTraitement }}
+      <span *ngIf="dme.dateDebutHospitalisation">{{ dme.dateDebutHospitalisation }}-{{ dme.dateFinHospitalisation }}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <span *ngIf="dme.degreAllergie">Degré : {{ dme.degreAllergie }} </span>
+        <span *ngIf="dme.typeConsultation">Type : {{ dme.typeConsultation }} </span>
+        <span *ngIf="dme.nomStructure">Lieu : {{ dme.nomStructure }}</span>
+        <span *ngIf="dme.degreMaladie">Degré : {{ dme.degreMaladie }} </span>
+        <span *ngIf="dme.typeAnalyse">Type : {{ dme.typeAnalyse }}</span>
+      </p>
+      <p>
+        <span *ngIf="dme.nomAgent">Médecin : {{ dme.nomAgent }} {{ dme.prenomAgent }}</span>
+      </p>
+      <p>
+          {{ dme.detailsAllergie }} {{ dme.detailsAntecedant }} {{ dme.diagnostic }} {{ dme.detailsMaladie }}
+          {{ dme.resultatsAnalyse }} {{ dme.detailsTraitement }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

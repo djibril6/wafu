@@ -1,5 +1,62 @@
 <ion-split-pane>
 
+    <!-- logged out menu -->
+    <ion-menu id="loggedOutMenu" [content]="content">
+  
+      <ion-header>
+        <ion-toolbar color="danger">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+  
+      <ion-content class="outer-content">
+
+        <ion-list *ngIf="vg.title != 'null'">
+          <ion-list-header>
+            {{ vg.title }}
+          </ion-list-header>
+          <button ion-item menuClose *ngFor="let p of vg.menu" (click)="openPage(p)">
+            <ion-icon item-start [name]="p.icon" color="secondary"></ion-icon>
+            {{p.title}}
+          </button>
+        </ion-list>
+  
+        <ion-list>
+          <ion-list-header>
+            Naviguez
+          </ion-list-header>
+          <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+            <ion-icon item-start [name]="p.icon" color="danger"></ion-icon>
+            {{p.title}}
+          </button>
+        </ion-list>
+  
+        <ion-list>
+          <ion-list-header>
+            Compte
+          </ion-list-header>
+          <button ion-item menuClose *ngFor="let p of vg.loggedOutPages" (click)="openPage(p)">
+            <ion-icon item-start [name]="p.icon" color="dark"></ion-icon>
+            {{p.title}}
+          </button>
+        </ion-list>
+  
+        <ion-list>
+          <ion-list-header>
+            Annexe
+          </ion-list-header>
+          <button ion-item menuClose (click)="openAnnexe('tuto')">
+            <ion-icon item-start name="hammer"></ion-icon>
+            Voir le tutoriel
+          </button>
+          <button ion-item menuClose (click)="openAnnexe('about')">
+              <ion-icon item-start name="information"></ion-icon>
+              Info App
+            </button>
+        </ion-list>
+      </ion-content>
+  
+    </ion-menu>
   
     <!-- main navigation -->
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main name="app"></ion-nav>

@@ -1,50 +1,55 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, LoadingController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { ApiService } from '../../services/service.api';
+import { NativeStorage } from '@ionic-native/native-storage';
 
+import { VarGlobal } from '../../globals/global.var';
+import { ApiService } from '../../services/api.service';
+
+import { DmePage } from '../dme/dme';
+import { PharmPage } from '../pharm/pharm';
 import { LoginPage } from '../login/login';
-import { ModifPage } from '../modif/modif';
-
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
 
-  constructor(public navCtrl: NavController, public api: ApiService, public toastCtrl: ToastController, public loadingCtrl: LoadingController,) {
-    
-  }
-  del(item) {
-    var api = this.api;
-    var data = new FormData;
-    var navCtrl = this.navCtrl;
-    var toast = this.toastCtrl;
-    data.append("mode", "del");
-    data.append("id", item.id);
-    data.append("compte", item.compte);
-    const loader = this.loadingCtrl.create({
-      content: "Un instant...",
-      duration: 3000
-    });
-    loader.present();
-    api.ajaxPost(api.mainUrl, data, function(rep){
+  url: string = this.api.mainUrl + "news.php";
+
+  constructor(public navCtrl: NavController, public vg: VarGlobal, public nativeStorage: NativeStorage, public api: ApiService) {
+    this.nativeStorage.setItem('tuto', {});
+    var news = new FormData;
+    news.append('news', '');
+    api.ajaxPost(this.url, news, function(rep){
       if (rep.success) {
-        navCtrl.setRoot(LoginPage);
-      } else {
-        let test = toast.create({
-          message: rep.message,
-          duration: 3000,
-          position: 'top'
-        });
-        test.present();
+        vg.epi = rep.result[0];
+        vg.news = rep.result[1];
       }
     });
   }
 
-  modif(item) {
-    this.navCtrl.push(ModifPage, {item:item})
+  lirePlus() {
+    this.navCtrl.push('homeDetails');
+  }
+
+  naviguerVers(page: string) {
+    switch (page) {
+      case 'DmePage':
+        if (this.vg.session == 1) {
+          this.navCtrl.setRoot(DmePage);
+        } else {
+          this.navCtrl.push(LoginPage, {source: 'dme'});
+        }
+        break;
+
+      case 'PharmPage':
+        this.navCtrl.setRoot(PharmPage);
+        break;
+    
+      default:
+        break;
+    }
   }
 }

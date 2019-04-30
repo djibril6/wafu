@@ -1,40 +1,69 @@
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>Mon Compte</ion-title>
-  </ion-navbar>
+<ion-content id="content">
+    <img src="assets/imgs/back.png" id="back">
+  <div id="head">
+        
+  </div>
 
-</ion-header>
+  <div id="body">
 
+      <ion-slides pager class="slides">
 
-<ion-content>
-
-  <ion-card *ngFor="let item of api.user">
-
-    <ion-item>
-      <h2>{{ item.nom }}</h2>
-      <p>{{ item.prenom }}</p>
-    </ion-item>
-
-    <ion-card-content>
-      <p>Tel : {{ item.tel }}</p>
-      <p>Email : {{ item.email }}</p>
-      <p>Compte : {{ item.compte }}</p>
-    </ion-card-content>
-
-    <ion-row>
-      <ion-col>
-        <button (tap)="modif(item)" ion-button color="secondary" clear small icon-start>
-            <ion-icon name='hand'></ion-icon>
-            Modifier
+        <ion-slide style="background-color: rgba(0, 128, 0, 0);" class="slide" *ngFor="let e of vg.epi">
+          <h4 class="titre">{{ e.titreAlerte }}</h4>
+          <button class="lire-btn" color="trans" (click)="lirePlus(e)">
+              <img [src]="e.imageAlerte">
           </button>
-      </ion-col>
-      <ion-col>
-        <button (tap)="del(item)" ion-button color="danger" clear small icon-start>
-            <ion-icon name='close'></ion-icon>
-            Supprimer
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+        </ion-slide>
+          
+        <ion-slide style="background-color: rgba(0, 128, 0, 0);" class="slide" *ngFor="let n of vg.news">
+            <h4 class="titre">{{ n.titreActualite }}</h4>
+            <button class="lire-btn" color="trans" (click)="lirePlus(n)">
+                <img [src]="n.imageActualite">
+            </button>
+        </ion-slide>   
+      </ion-slides>
+
+    <ion-grid id="grid">
+
+        <ion-row id="row">
+            <ion-col col-1>
+              </ion-col>
+            <ion-col col-4 style="background-color: #ffffff" class="colo">
+              <button ion-button color="danger" class="btn-nav" (click)="naviguerVers('DmePage')">
+                  <ion-grid>
+                      <ion-row>
+                          <ion-col col-12>
+                            <ion-icon name="paper"></ion-icon>
+                          </ion-col>
+                      </ion-row>
+                      <ion-row>
+                          <ion-col col-12>DME</ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </button>
+            </ion-col>
+            <ion-col col-2>
+            </ion-col>
+            <ion-col col-4 style="background-color: #ffffff" class="colo">
+                <button ion-button color="danger" class="btn-nav" (click)="naviguerVers('PharmPage')">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-12>
+                              <ion-icon name="medkit"></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-12>Pharm</ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </button>
+            </ion-col>
+            <ion-col col-1>
+              </ion-col>
+        </ion-row> 
+        
+    </ion-grid>
+  </div>
+  
 </ion-content>
