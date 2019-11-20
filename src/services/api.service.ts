@@ -1,5 +1,5 @@
 export class ApiService {
-    public mainUrl: string = "https://djiblog.net/apiwafu/c/";
+    public mainUrl: string = "https://djiblog.net/apiwafu/c/"; 
     constructor() {
         
     }
